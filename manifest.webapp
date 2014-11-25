@@ -1,9 +1,12 @@
 {
-    "name": "Labirynth Canvas",
+    "name": "Labyrinth Canvas",
     "description": "---",
-    "version": "0.1",
+    "version": "0.0.0",
     "developer": {
-        "name": "NAG"
+        "name": "NAG",
+        "url": "http://github.com/NAGTeam"
     },
-    "launch_path": "/index.html"
+    "launch_path": "/index.html",
+    "fullscreen": "true",
+    "orientation": "portrait"
 }
