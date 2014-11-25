@@ -1,0 +1,9 @@
+{
+    "name": "Labirynth Canvas",
+    "description": "---",
+    "version": "0.1",
+    "developer": {
+        "name": "NAG"
+    },
+    "launch_path": "/index.html"
+}

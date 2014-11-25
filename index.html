@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>Labirynth Canvas</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no, scrollable=no" />
+	
+	<script src='script/start.js'></script>
+	<script src='script/preload.js'></script>
+	<script src='script/home.js'></script>
+	<script src='script/game.js'></script>
+	<script src='script/phaser.min.js'></script>
+</head>
+<body style="margin: 0">
+	<!-- ... -->
+	<script>
+		(function() {
+			var w = window.innerWidth;
+			var h = window.innerHeight;
+			var game = new Phaser.Game(w, h, Phaser.AUTO, '');
+			console.log("game created");
+			game.state.add('Start', Ball.Start);
+			console.log("state Start created");
+			game.state.add('Preloader', Ball.Preloader);
+			console.log("state Preloader created");
+			game.state.add('Home', Ball.Home);
+			console.log("state Home created");
+			game.state.add('Play', Ball.Game);
+			console.log("state Play created");
+			game.state.start('Start');
+		})();
+	</script>
+</body>
+</html>
