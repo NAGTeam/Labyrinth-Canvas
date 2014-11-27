@@ -12,7 +12,7 @@ Ball.Preloader.prototype = {
 	},
 	create: function() {
 		/* pass the baton to Menu */
-		console.log("Pass the baton to Menu");
-		this.game.state.start('Home');
+		console.log("Pass the baton to MainMenu");
+		this.game.state.start('MainMenu');
 	}
 };

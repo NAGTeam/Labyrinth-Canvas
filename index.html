@@ -18,15 +18,15 @@
 			var h = window.innerHeight;
 			var game = new Phaser.Game(w, h, Phaser.AUTO, '');
 			console.log("game created");
-			game.state.add('Start', Ball.Start);
-			console.log("state Start created");
+			game.state.add('Boot', Ball.Boot);
+			console.log("state Boot created");
 			game.state.add('Preloader', Ball.Preloader);
 			console.log("state Preloader created");
-			game.state.add('Home', Ball.Home);
+			game.state.add('MainMenu', Ball.MainMenu);
 			console.log("state Home created");
 			game.state.add('Game', Ball.Game);
 			console.log("state Play created");
-			game.state.start('Start');
+			game.state.start('Boot');
 		})();
 	</script>
 </body>

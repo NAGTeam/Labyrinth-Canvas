@@ -1,6 +1,6 @@
 var Ball = {};
-Ball.Start = function(game) {};
-Ball.Start.prototype = {
+Ball.Boot = function(game) {};
+Ball.Boot.prototype = {
 	preload: function() {
 		/* ... */
 	},

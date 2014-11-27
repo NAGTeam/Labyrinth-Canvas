@@ -1,12 +1,18 @@
-Ball.Home = function(game) {};
-Ball.Home.prototype = {
+Ball.MainMenu = function(game) {};
+Ball.MainMenu.prototype = {
 	create: function() {
 		console.log("	Adding start button");
-		this.startButton = this.add.button((320-146)/2, 200, 'btn_start', this.play, this);
+		this.startButton = this.add.button((320-146)/2, 200, 'btn_start', function(){
+			console.log("Pass the baton to Game");
+			this.game.state.start("Game");
+		}, this);
 		console.log("	Done.");
 	},
-	play: function() {
-		console.log("Pass the baton to Play");
+	
+	update: function() {}
+	
+	/*play: function() {
+		console.log("Pass the baton to Game");
 		this.game.state.start("Game");
-	}
+	}*/
 };
