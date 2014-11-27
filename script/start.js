@@ -7,13 +7,13 @@ Ball.Start.prototype = {
 	create: function() {
 		console.log("	setting canvas size");
 		/* Setting the correct size */
-		this.game.stage.scaleMode = Phaser.StageScaleMode.SHOW_ALL;
+		this.game.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		console.log("	scaleMode set");
-		this.game.stage.scale.pageAlignHorizontally = true;
+		this.game.scale.pageAlignHorizontally = true;
 		console.log("	pageAlignHorizontally set");
-		this.game.stage.scale.pageAlignVertically = true;
+		this.game.scale.pageAlignVertically = true;
 		console.log("	pageAlignVertically set");
-		this.game.stage.scale.setScreenSize(true);
+		this.game.scale.setScreenSize(true);
 		console.log("	ScreenSize set");
 		this.game.state.start('Preloader');
 	}

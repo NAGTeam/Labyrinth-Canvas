@@ -1,16 +1,16 @@
-Ball.Game = function(game) {
-	ball = null;
-	block = null;
-	blocks = null;
-	hole = null;
-	holes = null;
-	finish = null;
-	level = 0;
-	maxLevels = 2;
-};
-Ball.Game.prototype = {
+Ball.Game = function(game) {};
+Ball.Game.prototype = {	
 	create: function() {	
 		console.log("Here I am!");
+		var ball = null;
+		var block = null;
+		var blocks = null;
+		var hole = null;
+		var holes = null;
+		var finish = null;
+		var level = 0;
+		var maxLevels = 2;
+		
 		/* adding deviceorientation handler */	
 		window.addEventListener("deviceorientation", this.handlingRotation, true);
 		
@@ -93,13 +93,13 @@ Ball.Game.prototype = {
 		else {
 			alert('Level '+level+' completed!');
 			level++;
-			this.game.state.start('Play');
+			this.game.state.start('Game');
 		}
 	},
 	
 	restartLevel: function() {
 		alert("You lose! Retry");
-		this.game.state.start('Play');
+		this.game.state.start('Game');
 	},
 	
 	handlingRotation: function(e) {

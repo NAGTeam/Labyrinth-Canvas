@@ -7,6 +7,6 @@ Ball.Home.prototype = {
 	},
 	play: function() {
 		console.log("Pass the baton to Play");
-		this.game.state.start('Play');
+		this.game.state.start("Game");
 	}
 };
