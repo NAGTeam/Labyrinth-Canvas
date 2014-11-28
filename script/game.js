@@ -16,8 +16,8 @@ Ball.Game.prototype = {
 		/* adding deviceorientation handler */	
 		window.addEventListener("deviceorientation", this.handlingRotation, true);
 		
-		/* readding background */
-		this.game.add.sprite(0, 0, 'bg');
+		/* re-adding background */
+		this.game.add.sprite(0, 0, 'bg');	
 		
 		/* adding group of block(s) */
 		blocks = this.game.add.group();
@@ -47,7 +47,7 @@ Ball.Game.prototype = {
 		block.body.immovable = true;
 		
 		/* finish! */
-		finish = this.game.add.sprite(window.innerWidth-40, window.innerHeight-40, 'finish');
+		finish = this.game.add.sprite(window.innerWidth*3/4, window.innerHeight-60, 'finish');
 		this.game.physics.arcade.enableBody(finish, true);
 		console.log("	Added finish");
 		finish.body.setSize(2, 2, 14, 14);
@@ -69,6 +69,24 @@ Ball.Game.prototype = {
 		console.log("	Ball set circle");
 		//ball.body.collideWorldBounds = true;
 		console.log("	Ball collideWorldBounds set");
+		
+		/* Handling Pause */
+		pause_menu = this.game.add.sprite(0, 0, 'pause_menu');
+		pause_menu.visible = false;	
+		pause = this.add.button(2, 2, 'pause', function(){
+			pause.visible = false;
+			pause_menu.visible = true;
+			this.game.paused = true;
+		}, this);
+		pause.inputEnabled = true;
+		//unpause.inputEnabled = true;
+		this.game.input.onDown.add(function () {
+			if(this.game.paused) {
+				this.game.paused = false;
+				pause.visible = true;
+				pause_menu.visible = false;
+			}
+		},this);
 		
 		/* Now let's create some levels */
 		this.createLevel(level);
@@ -141,6 +159,10 @@ Ball.Game.prototype = {
 		var y = e.beta;  // range [-180,180]
 		ball.body.velocity.x += x;
 		ball.body.velocity.y += y/2;
+	},
+	
+	managePause: function() {
+		this.game.paused =! this.game.paused;
 	}
 };
 
