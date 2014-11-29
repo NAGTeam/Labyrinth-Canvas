@@ -18,6 +18,9 @@ Ball.Preloader.prototype = {
 		this.game.load.image('btn_start', 'assets/btn_start.png');
 		this.game.load.image('pause', 'assets/pause.png');
 		this.game.load.image('pause_menu', 'assets/pause_menu.png');
+		this.game.load.image('home', 'assets/home.png');
+		this.game.load.image('info', 'assets/info.png');
+		this.game.load.image('help', 'assets/help.png');
 		console.log("	Sprites loaded.");
 	},
 	create: function() {

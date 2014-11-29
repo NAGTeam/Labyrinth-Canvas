@@ -5,8 +5,10 @@ Ball.Game = function(game) {
 	hole = null;
 	holes = null;
 	finish = null;
-	level = 0;
-	maxLevels = 2;
+	level = 1;
+	maxLevels = 3;
+	timer = 0;
+	loop = null;
 };
 Ball.Game.prototype = {	
 	preload: function() {},
@@ -41,6 +43,8 @@ Ball.Game.prototype = {
 		angle = blocks.create(3, window.innerHeight-16, 'angle4');
 		angle = blocks.create(window.innerWidth-18, window.innerHeight-16, 'angle3');
 		
+		timerText = this.game.add.text(15, window.innerHeight-35, "Time: "+timer, { font: "22px Arial", fill: "#f00000" });
+		
 		/* adding a block */
 		block = blocks.create(140, 200, 'vblock');
 		this.game.physics.arcade.enableBody(block, true);
@@ -70,7 +74,7 @@ Ball.Game.prototype = {
 		//ball.body.collideWorldBounds = true;
 		console.log("	Ball collideWorldBounds set");
 		
-		/* Handling Pause */
+		/* Managing Pause */
 		pause_menu = this.game.add.sprite(0, 0, 'pause_menu');
 		pause_menu.visible = false;	
 		pause = this.add.button(2, 2, 'pause', function(){
@@ -79,7 +83,6 @@ Ball.Game.prototype = {
 			this.game.paused = true;
 		}, this);
 		pause.inputEnabled = true;
-		//unpause.inputEnabled = true;
 		this.game.input.onDown.add(function () {
 			if(this.game.paused) {
 				this.game.paused = false;
@@ -87,6 +90,9 @@ Ball.Game.prototype = {
 				pause_menu.visible = false;
 			}
 		},this);
+		
+		/* Timer */
+		loop = this.game.time.events.loop(Phaser.Timer.SECOND, this.updateCounter, this);
 		
 		/* Now let's create some levels */
 		this.createLevel(level);
@@ -97,12 +103,13 @@ Ball.Game.prototype = {
 		this.game.physics.arcade.collide(ball, finish, this.levelComplete, null, this);
 		this.game.physics.arcade.collide(ball, holes, this.restartLevel, null, this);
 		this.game.physics.arcade.collide(ball, blocks);
+
 	},
 	
 	createLevel: function(level) {
 		console.log("create level");
 		switch(level) {
-			case 1: {
+			case 2: {
 				block = blocks.create(140, 200, 'hblock');
 				this.game.physics.arcade.enableBody(block, true);
 				block.body.immovable = true;
@@ -112,7 +119,7 @@ Ball.Game.prototype = {
 				hole.body.immovable = true;		
 				break;
 			};
-			case 2: {
+			case 3: {
 				block = blocks.create(140, 200, 'hblock');
 				this.game.physics.arcade.enableBody(block, true);
 				block.body.immovable = true;
@@ -137,19 +144,23 @@ Ball.Game.prototype = {
 	
 	levelComplete: function() {
 		if(level >= maxLevels) {
+			alert('Level '+level+' completed!\nTime = ' + timer);
 			alert('Game completed!');
 			level = 0;
+			timer = 0;
 			this.game.state.start('MainMenu');
 		}
 		else {
-			alert('Level '+level+' completed!');
+			alert('Level '+level+' completed!\nTime = ' + timer);
+			timer = 0;
 			level++;
 			this.game.state.start('Game');
 		}
 	},
 	
 	restartLevel: function() {
-		alert("You lose! Retry");
+		alert("LEVEL " + level + "\nYou lose! Retry");
+		timer = 0;
 		this.game.state.start('Game');
 	},
 	
@@ -161,8 +172,10 @@ Ball.Game.prototype = {
 		ball.body.velocity.y += y/2;
 	},
 	
-	managePause: function() {
-		this.game.paused =! this.game.paused;
+	updateCounter: function() {
+		timer++;
+		console.log(timer);
+		timerText.text = "Time: " + timer;
 	}
 };
 
