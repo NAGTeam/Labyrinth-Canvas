@@ -85,6 +85,8 @@ Ball.Game.prototype = {
 		pause.inputEnabled = true;
 		this.game.input.onDown.add(function () {
 			if(this.game.paused) {
+				ball.body.velocity.x = 0;
+				ball.body.velocity.y = 0;
 				this.game.paused = false;
 				pause.visible = true;
 				pause_menu.visible = false;
@@ -174,7 +176,6 @@ Ball.Game.prototype = {
 	
 	updateCounter: function() {
 		timer++;
-		console.log(timer);
 		timerText.text = "Time: " + timer;
 	}
 };

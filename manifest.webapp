@@ -8,5 +8,5 @@
     },
     "launch_path": "/index.html",
     "fullscreen": "true",
-    "orientation": "portrait"
+    "orientation": "portrait-primary"
 }
