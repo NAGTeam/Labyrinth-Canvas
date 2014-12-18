@@ -1,8 +1,9 @@
 Ball.MainMenu = function(game) {};
 Ball.MainMenu.prototype = {
 	create: function() {
+		this.game.add.sprite(0, 0, 'bg');
 		console.log("	Adding start button");
-		this.startButton = this.add.button((window.innerWidth-134)/2, (window.innerHeight-52)*2/3, 'btn_start', function(){
+		this.startButton = this.add.button((320-146)/2, 300, 'btn_start', function(){
 			console.log("Pass the baton to Game");
 			this.game.state.start("Game");
 		}, this);

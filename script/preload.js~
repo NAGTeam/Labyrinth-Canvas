@@ -10,12 +10,12 @@ Ball.Preloader.prototype = {
 		this.game.load.image('angle1', 'assets/angolo-alto-sx.png');
 		this.game.load.image('angle2', 'assets/angolo-alto-dx.png');
 		this.game.load.image('angle3', 'assets/angolo-basso-dx.png');
-		this.game.load.image('angle4', 'assets/angolo-basso-sx.png');*/
+		this.game.load.image('angle4', 'assets/angolo-basso-sx.png');
 		this.game.load.image('ball', 'assets/ball.png');
-		//this.game.load.image('hole', 'assets/hole.png');
-		//this.game.load.image('finish', 'assets/finish.png');
-		this.game.load.image('tileset', 'assets/tilemap.png');
-		this.game.load.tilemap('map1', 'assets/mappa1.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.image('hole', 'assets/hole.png');
+		this.game.load.image('finish', 'assets/finish.png');*/
+		this.game.load.image('tileset', 'assets/tileset16.png');
+		this.game.load.tilemap('map1', 'assets/1.json');
 		this.game.load.image('btn_start', 'assets/btn_start.png');
 		this.game.load.image('pause', 'assets/pause.png');
 		this.game.load.image('pause_menu', 'assets/pause_menu.png');

@@ -1,10 +1,15 @@
 Ball.Game = function(game) {
 	ball = null;
+	block = null;
+	blocks = null;
+	hole = null;
+	holes = null;
+	finish = null;
 	level = 1;
 	maxLevels = 3;
 	timer = 0;
 	loop = null;
-	foreground = null;
+	layer = null;
 	map = null;
 };
 Ball.Game.prototype = {	
@@ -19,7 +24,6 @@ Ball.Game.prototype = {
 		
 		/* Now let's create some levels */
 		this.createLevel(level);
-		this.game.camera.follow(ball);
 		
 		timerText = this.game.add.text(15, window.innerHeight-35, "Time: "+timer, { font: "22px Arial", fill: "#f00000" });
 		
@@ -60,7 +64,7 @@ Ball.Game.prototype = {
 	update: function() {
 		console.log("Yayyy update function starts!");
 		this.game.physics.arcade.collide(ball, layer);
-		//map.setTileIndexCallback(0, this.awesomeEvent, this);
+		map.setTileIndexCallback(0, this.awesomeEvent, this);
 	},
 	
 	createLevel: function(level) {
@@ -69,11 +73,9 @@ Ball.Game.prototype = {
 			case 1: {
 				map = this.game.add.tilemap('map1');
 				map.addTilesetImage('tileset');
-				foreground = map.createLayer('Foreground');
-				foreground.resizeWorld();
-				//ents = map.createLayer('Collisions');
-				//map.setCollisionBetween(0, 7);
-				console.log("Level 1 created");
+				layer = map.createLayer('Tile Layer 1');
+				//layer.resizeWorld();
+				map.setCollisionBetween(0, 7);
 				break;
 			};
 			case 2: {
